@@ -19,8 +19,6 @@ class FileStorage(IStorage):
 
             first_line = int(file.readline().strip())
 
-            print(first_line)
-
             for _ in range(first_line):
                 sudoku = []
 

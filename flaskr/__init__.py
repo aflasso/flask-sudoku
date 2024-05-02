@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, jsonify, request
 from flaskr.models.my_app import MyApp
-
+from flaskr.models.sudoku_verifier import SudokuVerifier
 
 def create_app(test_config=None):
     # create and configure the app
@@ -24,22 +24,24 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-
+    
+    
     my_app = MyApp()
+    sudoku_verifier = SudokuVerifier()
 
     sudokus = my_app.read_input()
 
-    print(sudokus)
     # a simple page that says hello
     @app.route('/hello')
     def hello():
-        return 'Hello, World!'
+
+        return sudokus[0]
     
     @app.route('/sudoku', methods = ('GET',))
     def sudoku():
 
 
 
-        return ""
+        return sudokus
 
     return app
