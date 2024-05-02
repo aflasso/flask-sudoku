@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, jsonify, request
+from flaskr.models.my_app import MyApp
 
 
 def create_app(test_config=None):
@@ -24,6 +25,11 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    my_app = MyApp()
+
+    sudokus = my_app.read_input()
+
+    print(sudokus)
     # a simple page that says hello
     @app.route('/hello')
     def hello():
@@ -31,6 +37,7 @@ def create_app(test_config=None):
     
     @app.route('/sudoku', methods = ('GET',))
     def sudoku():
+
 
 
         return ""

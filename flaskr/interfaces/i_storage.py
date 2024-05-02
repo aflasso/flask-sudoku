@@ -10,7 +10,7 @@ class IStorage(ABC):
     """
 
     @abstractmethod
-    def read_data(self):
+    def read_data():
         """
         Reads and returns the readed data, or None if is no data.
         """
