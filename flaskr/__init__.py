@@ -25,13 +25,14 @@ def create_app(test_config=None):
     except OSError:
         pass
     
-    
-    my_app = MyApp()
-    sudoku_verifier = SudokuVerifier()
 
+    my_app = MyApp()
     sudokus = my_app.read_input()
 
-    # a simple page that says hello
+
+    valid = my_app.verify_sudoku(sudokus[0])
+
+    print(valid)
     @app.route('/hello')
     def hello():
 

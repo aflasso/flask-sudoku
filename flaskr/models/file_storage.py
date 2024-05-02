@@ -12,6 +12,9 @@ class FileStorage(IStorage):
 
     @staticmethod
     def read_data():
+        """
+        Reads the data in the input.txt file. Sorts it on a matrix
+        """
 
         readed_data = []
 
@@ -23,8 +26,8 @@ class FileStorage(IStorage):
                 sudoku = []
 
                 line = file.readline()
-                while line != '\n' and line != '':
-                    
+                while line not in ('\n', ''):
+
                     row = [int(number) for number in line.strip()]
 
                     sudoku.append(row)
@@ -34,5 +37,3 @@ class FileStorage(IStorage):
 
 
         return readed_data
-
-
