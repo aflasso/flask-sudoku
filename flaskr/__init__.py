@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, jsonify, request
 
 
 def create_app(test_config=None):
@@ -29,8 +29,10 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
     
-    @app.route('/sudoku')
+    @app.route('/sudoku', methods = ('GET',))
     def sudoku():
-        pass
+
+
+        return ""
 
     return app
