@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.sudoku-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sudoku {
+    margin: 10px;
+    border: 1px solid #333;
+    display: inline-block;
+}
+
+.sudoku-row {
+    display: flex;
+}
+
+.sudoku-cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 30px;
+    margin: 1px;
+}
+
+/* Estilo para resaltar filas con conflictos */
+.sudoku-row.conflict-row {
+    background-color: #FFC0CB; /* Color rosa claro */
+}
+
+/* Estilo para resaltar columnas con conflictos */
+.sudoku-cell.conflict-cell {
+    background-color: #FFC0CB; /* Color azul claro */
+}

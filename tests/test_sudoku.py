@@ -13,7 +13,7 @@ def test_valid_sudoku(client):
                         ]
             }
 
-    response = client.get('/sudoku', json = data)
+    response = client.post('/validate', data = data)
 
     assert response.status_code == 200
     assert b'El soduku es valido' in response.data
@@ -32,7 +32,7 @@ def test_invalid_sudoku(client):
                             ]
                 }
 
-    response = client.get('/sudoku', json = data)
+    response = client.post('/validate', data = data)
 
     assert response.status_code == 200
     assert b'El sudoku es invalido' in response.data
@@ -52,7 +52,7 @@ def test_invalid_sudoku(client):
                             ]
                 }
     
-    response = client.get('/sudoku', json = data2)
+    response = client.post('/validate', data = data2)
 
     assert response.status_code == 200
     assert b'El sudoku es invalido' in response.data

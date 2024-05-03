@@ -104,7 +104,7 @@ class SudokuVerifier(IProblemSolver):
 
             if conflicts_in_section:
 
-                conflict_section.append({f'{section_number}' : conflicts_in_section})
+                conflict_section.append({'id' : section_number, 'conflicts' : conflicts_in_section})
 
             section_number += 1
 
@@ -126,6 +126,7 @@ class SudokuVerifier(IProblemSolver):
         is_valid = not conflicts_rows and not conflicts_columns and not conflicts_grids
 
         result = {
+            'sudoku' : sudoku,
             'valid' : is_valid,
             'conflict_rows' : conflicts_rows,
             'conflict_columns' : conflicts_columns,

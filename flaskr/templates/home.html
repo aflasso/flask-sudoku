@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Home</title>
+</head>
+<body>
+    
+    <div class="sudoku-container">
+        
+        {% for sudoku_data in data['sudokus'] %}
+
+        <div class="sudoku">
+            
+            {% for row in sudoku_data['sudoku'] %}
+            {% set index = loop.index%}
+            <div  class="sudoku-row {%if index in sudoku_data['color_rows']%} conflict-row {%endif%}">
+                {% for cell in row %}
+                {% set index = loop.index%}
+                <div class="sudoku-cell {%if index in sudoku_data['color_columns']%} conflict-cell {%endif%}">{{ cell }}</div>
+                {% endfor %}
+            </div>
+            
+            {% endfor %}
+            
+            {%if sudoku_data['valid']%}
+                <p>El sudoku es valido</p>
+            {% else %}
+                <p>El sudoku no es valido</p>
+            {% endif %}
+
+            {%for row_conflict in sudoku_data['conflict_rows']%}
+                {%for conflict in row_conflict['conflicts']%}
+                    <p>El numero {{conflict}} esta repetido en la fila {{row_conflict['id']}}</p>
+                {% endfor %}
+            {% endfor %}
+
+            {%for column_conflict in sudoku_data['conflict_columns']%}
+                {%for conflict in column_conflict['conflicts']%}
+                    <p>El numero {{conflict}} esta repetido en la columna {{column_conflict['id']}}</p>
+                {% endfor %}
+            {% endfor %}
+
+            {%for grid_conflict in sudoku_data['conflict_grids']%}
+                {%for conflict in grid_conflict['conflicts']%}
+                    <p>El numero {{conflict}} esta repetido en la cuadricula {{grid_conflict['id']}}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>
