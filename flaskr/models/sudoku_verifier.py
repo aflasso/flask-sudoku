@@ -133,6 +133,15 @@ class SudokuVerifier(IProblemSolver):
             'conflict_grids' : conflicts_grids
         }
 
+        result['color_rows'] = []
+        result['color_columns'] = []
+
+        for conflict_row in result['conflict_rows']:
+            result['color_rows'].append(conflict_row['id'])
+
+        for conflict_colum in result['conflict_columns']:
+            result['color_columns'].append(conflict_colum['id'])
+
         return result
 
     def binary_search(self, arr, target):

@@ -28,9 +28,6 @@ def create_app(test_config=None):
 
     my_app = MyApp()
     sudokus = my_app.read_input()
-
-    verify = my_app.verify_sudoku(sudokus[0])
-    print(verify)
     @app.route('/')
     def hello():
 
@@ -41,18 +38,9 @@ def create_app(test_config=None):
         for sudoku in sudokus:
 
             data['sudokus'].append(my_app.verify_sudoku(sudoku))
-        
-        for sudoku in data['sudokus']:
-            sudoku['color_rows'] = []
-            sudoku['color_columns'] = []
 
-            for conflict_row in sudoku['conflict_rows']:
-                sudoku['color_rows'].append(conflict_row['id'])
-
-            for conflict_colum in sudoku['conflict_columns']:
-                sudoku['color_columns'].append(conflict_colum['id'])
 
         return render_template('home.html', data = data)
-    
+
 
     return app
