@@ -1,0 +1,41 @@
+@startuml
+
+interface IStorage {
+    + read_data()
+}
+
+interface IProblemSolver {
+    + compute_result(sudoku)
+}
+
+
+
+class FileStorage {
+    + read_data(): List[List[int]]
+}
+
+class MyApp {
+    - sudoku_verifier: IProblemSolver
+    + read_input()
+    + verify_sudoku(sudoku)
+}
+
+class SudokuVerifier {
+    + compute_result(data)
+    + get_rows(sudoku)
+    + get_columns(sudoku)
+    + get_grids(sudoku)
+    + verify_one_sudoku_section(section)
+    + verify_sudoku_section(section)
+    + verify_sudoku(sudoku)
+    + binary_search(arr, target)
+}
+
+IProblemSolver <|.. SudokuVerifier
+IStorage <|.. FileStorage
+MyApp *-- IProblemSolver
+
+IStorage -- MyApp 
+
+@enduml
+    

@@ -19,4 +19,3 @@ def test_valid_sudoku(client):
     assert b'El numero 6 esta repetido en la fila 7' in response.data
     assert b'El numero 6 esta repetido en la columna 4' in response.data
     assert b'El numero 6 esta repetido en la cuadricula 8' in response.data
-

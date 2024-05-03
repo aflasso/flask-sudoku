@@ -27,12 +27,12 @@ body {
     margin: 1px;
 }
 
-/* Estilo para resaltar filas con conflictos */
+
 .sudoku-row.conflict-row {
-    background-color: #FFC0CB; /* Color rosa claro */
+    background-color: #FFC0CB; 
 }
 
-/* Estilo para resaltar columnas con conflictos */
+
 .sudoku-cell.conflict-cell {
-    background-color: #FFC0CB; /* Color azul claro */
+    background-color: #FFC0CB; 
 }

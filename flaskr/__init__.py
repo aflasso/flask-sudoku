@@ -1,3 +1,6 @@
+"""
+This module contains the entry point to the program
+"""
 import os
 
 from flask import Flask, jsonify, request, render_template
@@ -24,7 +27,7 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-    
+
 
     my_app = MyApp()
     sudokus = my_app.read_input()
@@ -41,6 +44,5 @@ def create_app(test_config=None):
 
 
         return render_template('home.html', data = data)
-
 
     return app

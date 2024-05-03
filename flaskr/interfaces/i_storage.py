@@ -14,9 +14,3 @@ class IStorage(ABC):
         """
         Reads and returns the readed data, or None if is no data.
         """
-
-    @abstractmethod
-    def save_data(self,data):
-        """
-        Saves the data on the storage.
-        """

@@ -1,0 +1,25 @@
+@startuml Verificación_de_Sudoku_en_Flask
+
+actor Usuario
+participant "Cliente Web" as Cliente
+participant Servidor
+participant MyApp
+participant FileStorage
+participant SudokuVerifier
+
+User -> Cliente: Realiza una solicitud GET a la página principal
+Cliente -> Servidor: Envía la solicitud GET a la ruta '/'
+Servidor -> Servidor: Lee los datos de entrada desde el archivo input.txt
+Servidor -> MyApp: Llama al método read_input()
+MyApp -> FileStorage: Llama al método estático read_data() para leer el archivo
+FileStorage --> Servidor: Devuelve los datos leídos del archivo
+Servidor -> MyApp: Recibe los datos leídos
+Servidor -> MyApp: Llama al método verify_sudoku() para cada sudoku en los datos leídos
+MyApp -> SudokuVerifier: Llama al método compute_result() para verificar cada sudoku
+SudokuVerifier --> MyApp: Devuelve el resultado de la verificación del sudoku
+MyApp --> Servidor: Devuelve los resultados de la verificación de sudokus
+Servidor -> Servidor: Renderiza la plantilla 'home.html' con los resultados
+Servidor --> Cliente: Devuelve la página HTML renderizada con los resultados
+Cliente --> User: Muestra la página HTML con los resultados de la verificación de sudokus
+
+@enduml
